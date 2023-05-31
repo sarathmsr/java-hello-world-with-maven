@@ -8,7 +8,7 @@ pipeline{
     stages{
         stage('Test'){
             steps{
-                git 'https://github.com/sarathmsr/java-hello-world-with-maven.git'
+                   checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'gitcreds', url: 'git@github.com:sarathmsr/java-hello-world-with-maven.git']]])
                 sh "mvn clean package"
             }
         }
