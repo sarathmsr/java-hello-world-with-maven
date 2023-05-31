@@ -12,7 +12,7 @@ pipeline{
                 sh "mvn clean package"
             }
         }
-        }
+    
 	stage('dockerbuild'){
 	    steps{
 		    sh "docker build . -t smadavan/nodehello:${BUILD_NUMBER}"
