@@ -15,14 +15,14 @@ pipeline{
     
 	stage('dockerbuild'){
 	    steps{
-		    sh "docker build . -t smadavan/nodehello:${BUILD_NUMBER}"
+		    sh "docker build . -f Dockersfile -t smadavan/java-hello-world-with-maven:${BUILD_NUMBER}"
             }
         }
 	stage('docker push') {
 	     steps {
 		      script {
 		      withDockerRegistry(credentialsId: 'dockerregistry') {
-			      sh "docker push smadavan/nodehello:${BUILD_NUMBER}"
+			      sh "docker push smadavan/java-hello-world-with-maven:${BUILD_NUMBER}"
 		       }
             }
 	 }
